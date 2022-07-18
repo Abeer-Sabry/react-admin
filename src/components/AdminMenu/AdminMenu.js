@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // --- MUI-Components
 import { Collapse, Divider, ListItemIcon, ListItemText, MenuItem, MenuList } from "@mui/material";
 // --- Styles
-import { CustomListItemIcon, CustomListItemText } from "./styles";
+import { CustomMenuItem } from "./styles";
 // --- React-Router-dom
 import { NavLink } from "react-router-dom";
 // --- MUI-Icons
@@ -14,6 +14,7 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import PanoramaFishEyeOutlinedIcon from "@mui/icons-material/PanoramaFishEyeOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+// --- Constants
 import { colors } from "../../constants/constants";
 
 const AdminMenu = () => {
@@ -27,73 +28,82 @@ const AdminMenu = () => {
   return (
     <>
       <MenuList>
-        <MenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="">
-          <CustomListItemIcon>
+        {/* Dashboard */}
+        <CustomMenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="/">
+          <ListItemIcon>
             <DashboardOutlinedIcon />
-          </CustomListItemIcon>
-          <CustomListItemText>Dashboard</CustomListItemText>
-        </MenuItem>
-        <MenuItem sx={{ pl: "0", mb: "10px" }} component={NavLink} to="" onClick={handleClick}>
-          <CustomListItemIcon>
+          </ListItemIcon>
+          <ListItemText>Dashboard</ListItemText>
+        </CustomMenuItem>
+        {/* Requests */}
+        <CustomMenuItem
+          sx={{ pl: "0", mb: "10px" }}
+          component={NavLink}
+          to="/requests"
+          onClick={handleClick}
+        >
+          <ListItemIcon>
             <ViewAgendaOutlinedIcon />
-          </CustomListItemIcon>
-          <CustomListItemText>Requests</CustomListItemText>
-        </MenuItem>
+          </ListItemIcon>
+          <ListItemText>Requests</ListItemText>
+        </CustomMenuItem>
+
         {/* Collapse menu */}
         <Collapse in={open} timeout="auto" unmountOnExit sx={{ mb: "10px" }}>
-          <MenuItem component={NavLink} to="">
-            <ListItemIcon sx={{ color: `${colors.yellow}` }}>
-              <PanoramaFishEyeOutlinedIcon sx={{ fontSize: "13px" }} />
+          <MenuItem component={NavLink} to="/pending">
+            <ListItemIcon sx={{ color: colors.yellow }}>
+              <PanoramaFishEyeOutlinedIcon sx={{ fontSize: "14px" }} />
             </ListItemIcon>
-            <CustomListItemText>Pending</CustomListItemText>
+            <ListItemText>Pending</ListItemText>
           </MenuItem>
-
-          <MenuItem component={NavLink} to="">
-            <ListItemIcon sx={{ color: `${colors.green}` }}>
-              <PanoramaFishEyeOutlinedIcon sx={{ fontSize: "13px" }} />
+          <MenuItem component={NavLink} to="/confirmed">
+            <ListItemIcon sx={{ color: colors.green }}>
+              <PanoramaFishEyeOutlinedIcon sx={{ fontSize: "14px" }} />
             </ListItemIcon>
-            <CustomListItemText>Confirmed</CustomListItemText>
+            <ListItemText>Confirmed</ListItemText>
           </MenuItem>
-          <MenuItem component={NavLink} to="">
-            {/* <ListItemIcon></ListItemIcon> */}
-            <CustomListItemText sx={{ ml: "35px" }}>All Requests</CustomListItemText>
-          </MenuItem>
+          <CustomMenuItem component={NavLink} to="/requests">
+            <ListItemText sx={{ ml: "35px" }}>All Requests</ListItemText>
+          </CustomMenuItem>
         </Collapse>
-        <MenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="">
-          <CustomListItemIcon>
+        {/* users */}
+        <CustomMenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="/users">
+          <ListItemIcon>
             <PersonOutlineOutlinedIcon />
-          </CustomListItemIcon>
-          <CustomListItemText>Users</CustomListItemText>
-        </MenuItem>
-
-        <MenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="">
-          <CustomListItemIcon>
+          </ListItemIcon>
+          <ListItemText>Users</ListItemText>
+        </CustomMenuItem>
+        {/* Boxes */}
+        <CustomMenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="/boxes">
+          <ListItemIcon>
             <Inventory2Icon />
-          </CustomListItemIcon>
-          <CustomListItemText>Boxes</CustomListItemText>
-        </MenuItem>
-        <MenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="">
-          <CustomListItemIcon>
+          </ListItemIcon>
+          <ListItemText>Boxes</ListItemText>
+        </CustomMenuItem>
+        {/* Orders */}
+        <CustomMenuItem sx={{ pl: "0", pb: "20px" }} component={NavLink} to="/orders">
+          <ListItemIcon>
             <ChatBubbleOutlineOutlinedIcon />
-          </CustomListItemIcon>
-          <CustomListItemText>Orders</CustomListItemText>
-        </MenuItem>
+          </ListItemIcon>
+          <ListItemText>Orders</ListItemText>
+        </CustomMenuItem>
 
         <Divider />
-        <MenuItem sx={{ pl: "0", pt: "20px" }} component={NavLink} to="">
-          <CustomListItemIcon>
+        {/* Settings */}
+        <CustomMenuItem sx={{ pl: "0", pt: "20px" }} component={NavLink} to="/settings">
+          <ListItemIcon>
             <MoreHorizOutlinedIcon />
-          </CustomListItemIcon>
-          <CustomListItemText>Settings</CustomListItemText>
-        </MenuItem>
+          </ListItemIcon>
+          <ListItemText>Settings</ListItemText>
+        </CustomMenuItem>
       </MenuList>
 
       {/* LogOut Button */}
-      <MenuItem sx={{ pl: "0", pt: "20px" }}>
-        <CustomListItemIcon>
+      <MenuItem sx={{ pl: "0", pt: "20px", position: "absolute", bottom: "12px", left: "30px" }}>
+        <ListItemIcon>
           <PowerSettingsNewIcon />
-        </CustomListItemIcon>
-        <CustomListItemText>LogOut</CustomListItemText>
+        </ListItemIcon>
+        <ListItemText>LogOut</ListItemText>
       </MenuItem>
     </>
   );
