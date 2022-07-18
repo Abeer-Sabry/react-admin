@@ -1,7 +1,7 @@
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import React from "react";
 import AdminMenu from "../AdminMenu/AdminMenu";
-
+import { colors } from "../../constants/constants";
 const SideBar = () => {
   return (
     <Box
@@ -14,10 +14,10 @@ const SideBar = () => {
         width: "100%",
         zIndex: "9990",
         height: "100vh",
-        boxShadow: "5px -4px 8px rgba(0,0,0,0.1)",
+        boxShadow: "5px -4px 8px rgba(0,0,0,0.03)",
       }}
     >
-      <h2 style={{ marginBottom: "20px" }}>.xo</h2>
+      <h2 style={{ marginBottom: "20px", color: colors.blue }}>.xo</h2>
       <Stack direction="row" spacing={2} alignItems="center" sx={{ marginBottom: "40px" }}>
         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" sx={{ width: 46, height: 46 }} />
         <div>

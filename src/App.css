@@ -17,3 +17,20 @@ a {
   grid-template-columns: 2fr 10fr;
   /* grid-column-gap: 20px; */
 }
+#customSelect {
+  color: #109cf1 !important;
+  border: transparent !important;
+}
+
+.MuiSelect-root {
+  border-radius: none !important;
+}
+.MuiSelect-multiple {
+  border: 1px solid orange;
+}
+.MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+  border: none !important;
+}
+/* .MuiFormControl-root {
+  border: 1px solid orange !important;
+} */
